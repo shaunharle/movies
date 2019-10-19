@@ -4,7 +4,9 @@ conLog = input => {
 
 $(() => {
   $("form").on("submit", () => {
+    $("#movieDiv").empty();
     event.preventDefault();
+    let movies = [];
     const $inputBox = $("#input-box");
     const $inputValue = $inputBox.val();
     const $fixedInput = $inputValue.replace(/ /g, "+");
@@ -12,7 +14,6 @@ $(() => {
       `https://api.themoviedb.org/3/search/movie?api_key=242360b40786effa62d7b362929924c5&query=` +
       $fixedInput;
     $(event.currentTarget).trigger("reset");
-    let movies = [];
     $.ajax({
       url: searchLink
     }).then(grabID => {
@@ -27,7 +28,9 @@ $(() => {
       $.ajax({
         url: $queryLink
       }).then(findSimilar => {
+        movies = [];
         movies = findSimilar.results;
+
         conLog(movies);
         for (i = 0; i < 10; i++) {
           count = i;
@@ -39,13 +42,11 @@ $(() => {
           posterPath = movies[i].poster_path;
 
           let $movieName = $("<p>").text(movieTitles);
-          $("body").append($movieName);
-          // conLog(movieOverview);
-          // conLog(movieID);
+          $("#movieDiv").append($movieName);
           let $posterImage = $("<img class='posters' id='poster[i]'>")
             .attr("src", posterLink + posterPath)
             .css("height", "500px")
-            .appendTo("body");
+            .appendTo("#movieDiv");
         }
       });
     });
