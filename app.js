@@ -3,8 +3,50 @@ conLog = input => {
 };
 
 $(() => {
+  // let currentImgIndex = 0;
+  // let highestIndex = $(".carousel-images").children().length - 1;
+  // // next button
+  // $(".next").on("click", () => {
+  //   // hide current image
+  //   $(".carousel-images")
+  //     .children()
+  //     .eq(currentImgIndex)
+  //     .css("display", "none");
+  //   // increment image index
+  //   if (currentImgIndex < highestIndex) {
+  //     currentImgIndex++;
+  //   } else {
+  //     currentImgIndex = 0;
+  //   }
+
+  //   // show current image
+  //   $(".carousel-images")
+  //     .children()
+  //     .eq(currentImgIndex)
+  //     .css("display", "block");
+  // });
+
+  // $(".previous").on("click", () => {
+  //   // hide current image
+  //   $(".carousel-images")
+  //     .children()
+  //     .eq(currentImgIndex)
+  //     .css("display", "none");
+  //   // decrement the image index
+  //   if (currentImgIndex > 0) {
+  //     currentImgIndex--;
+  //   } else {
+  //     currentImgIndex = highestIndex;
+  //   }
+  //   // show current image
+  //   $(".carousel-images")
+  //     .children()
+  //     .eq(currentImgIndex)
+  //     .css("display", "block");
+  // });
+  ////////////////////////////////////////////////////////////////////////
   $("form").on("submit", () => {
-    $("#movieDiv").empty();
+    $(".carousel-images").empty();
     event.preventDefault();
     let movies = [];
     const $inputBox = $("#input-box");
@@ -41,15 +83,58 @@ $(() => {
           posterLink = "http://image.tmdb.org/t/p/w1280";
           posterPath = movies[i].poster_path;
 
-          let $movieName = $("<p>").text(movieTitles);
-          $("#movieDiv").append($movieName);
-          let $posterImage = $("<img class='posters' id='poster[i]'>")
+          // let $movieName = $("<p>").text(movieTitles);
+          // $("#movieDiv").append($movieName);
+          let $posterImage = $("<img>")
             .attr("src", posterLink + posterPath)
-            .css("height", "500px")
-            .appendTo("#movieDiv");
+            // .attr("id", `${"poster" + i}`)
+            // .css("height", "500px")
+            .appendTo(".carousel-images");
         }
       });
     });
+  });
+  conLog("testyboi");
+  let currentImgIndex = 0;
+  let highestIndex = $(".carousel-images").children().length - 1;
+  // next button
+  $(".next").on("click", () => {
+    // hide current image
+    $(".carousel-images")
+      .children()
+      .eq(currentImgIndex)
+      .css("display", "none");
+    // increment image index
+    if (currentImgIndex < highestIndex) {
+      currentImgIndex++;
+    } else {
+      currentImgIndex = 0;
+    }
+
+    // show current image
+    $(".carousel-images")
+      .children()
+      .eq(currentImgIndex)
+      .css("display", "block");
+  });
+
+  $(".previous").on("click", () => {
+    // hide current image
+    $(".carousel-images")
+      .children()
+      .eq(currentImgIndex)
+      .css("display", "none");
+    // decrement the image index
+    if (currentImgIndex > 0) {
+      currentImgIndex--;
+    } else {
+      currentImgIndex = highestIndex;
+    }
+    // show current image
+    $(".carousel-images")
+      .children()
+      .eq(currentImgIndex)
+      .css("display", "block");
   });
 });
 
@@ -61,8 +146,3 @@ $(() => {
 // //   timeout: 5000,
 // //   language: "en-US"
 // // };
-
-////////////////////////////////////////////////////////////
-//   $("body").on("click", "#button", event => {
-//   });
-////////////////////////////////////////////////////////////
