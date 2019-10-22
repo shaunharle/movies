@@ -51,10 +51,11 @@ form h1 {
 .carousel-container {
   width: 60%;
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
 }
 .carousel-images {
-  width: 60%;
+  width: 55%;
   background: black;
   padding: 10px;
   border-radius: 10px;
@@ -88,11 +89,11 @@ form h1 {
   color: white;
 }
 .scroll {
-  background: green;
+  background: rgb(41, 73, 41);
   font-size: 20px;
-  height: 150px;
-  width: 500px;
+  height: 200px;
+  width: 60%;
   overflow-y: auto;
-  postion: absolute;
+  /* position: relative; */
   bottom: 0;
 }
