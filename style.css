@@ -1,14 +1,42 @@
 /* ======= GENERAL ======== */
 body {
-  background: #f9f9f9;
+  background: black;
+  color: white;
+  font-size: 3vw;
+  text-align: center;
 }
+form {
+  text-align: center;
+  padding: 20px;
+  /* display: flex; */
+  /* flex-direction: column; */
+}
+#button {
+  height: 35px;
+  width: 150px;
+  margin: 10px 200px 10px 200px;
+  /* justify-content: center; */
+}
+#input-box {
+  width: 60%;
+  color: black;
+  text-align: center;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+form h1 {
+  color: white;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .container > img {
-  width: 50%;
+  width: 30%;
 }
 .container > h1 {
   font-family: "Montserrat", impact;
@@ -21,17 +49,18 @@ body {
 }
 /* ======= CAROUSEL SECTION ======== */
 .carousel-container {
-  width: 70%;
+  width: 60%;
   display: flex;
   justify-content: space-around;
 }
 .carousel-images {
-  width: 80%;
-  background: #fa8d8e;
+  width: 60%;
+  background: black;
   padding: 10px;
   border-radius: 10px;
   box-sizing: border-box;
-  box-shadow: 2px 2px #f2cd99;
+  text-align: center;
+  /* box-shadow: 2px 2px grey; */
 }
 .carousel-images img {
   width: 100%;
@@ -45,16 +74,25 @@ body {
 
 .carousel-button {
   align-self: center;
-  background: #f2cd99;
-  color: #888;
+  background: grey;
+  color: cyan;
   padding: 10px;
   border-radius: 50%;
   text-align: center;
-  box-shadow: 1px 1px #fa8d8e;
+  /* box-shadow: 1px 1px orange; */
 }
 .carousel-button:hover {
   cursor: pointer;
-  background: #fa8d8e;
-  box-shadow: 1px 1px #f2cd99;
+  background: darkgray;
+  /* box-shadow: 1px 1px blue; */
   color: white;
+}
+.scroll {
+  background: green;
+  font-size: 20px;
+  height: 150px;
+  width: 500px;
+  overflow-y: auto;
+  postion: absolute;
+  bottom: 0;
 }

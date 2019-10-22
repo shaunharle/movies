@@ -3,50 +3,9 @@ conLog = input => {
 };
 
 $(() => {
-  // let currentImgIndex = 0;
-  // let highestIndex = $(".carousel-images").children().length - 1;
-  // // next button
-  // $(".next").on("click", () => {
-  //   // hide current image
-  //   $(".carousel-images")
-  //     .children()
-  //     .eq(currentImgIndex)
-  //     .css("display", "none");
-  //   // increment image index
-  //   if (currentImgIndex < highestIndex) {
-  //     currentImgIndex++;
-  //   } else {
-  //     currentImgIndex = 0;
-  //   }
-
-  //   // show current image
-  //   $(".carousel-images")
-  //     .children()
-  //     .eq(currentImgIndex)
-  //     .css("display", "block");
-  // });
-
-  // $(".previous").on("click", () => {
-  //   // hide current image
-  //   $(".carousel-images")
-  //     .children()
-  //     .eq(currentImgIndex)
-  //     .css("display", "none");
-  //   // decrement the image index
-  //   if (currentImgIndex > 0) {
-  //     currentImgIndex--;
-  //   } else {
-  //     currentImgIndex = highestIndex;
-  //   }
-  //   // show current image
-  //   $(".carousel-images")
-  //     .children()
-  //     .eq(currentImgIndex)
-  //     .css("display", "block");
-  // });
-  ////////////////////////////////////////////////////////////////////////
   $("form").on("submit", () => {
     $(".carousel-images").empty();
+    $(".scroll").empty();
     event.preventDefault();
     let movies = [];
     const $inputBox = $("#input-box");
@@ -56,6 +15,9 @@ $(() => {
       `https://api.themoviedb.org/3/search/movie?api_key=242360b40786effa62d7b362929924c5&query=` +
       $fixedInput;
     $(event.currentTarget).trigger("reset");
+    // const $searchedFor = $("<h1>")
+    //   .text(`Showing movies similar to your search for: ${$inputValue}`)
+    //   .prependTo($(".carousel-container"));
     $.ajax({
       url: searchLink
     }).then(grabID => {
@@ -88,53 +50,67 @@ $(() => {
           let $posterImage = $("<img>")
             .attr("src", posterLink + posterPath)
             // .attr("id", `${"poster" + i}`)
-            // .css("height", "500px")
+            // .css("display", "none")
             .appendTo(".carousel-images");
         }
+
+        let $overviewDiv = $("<div>")
+          // .addClass("scroll")
+          .text(movies[0].overview)
+          .appendTo(".scroll");
+
+        let currentImgIndex = 0;
+
+        let highestIndex = $(".carousel-images").children().length - 1;
+        // next button
+        $(".next").on("click", () => {
+          // hide current image
+          $(".carousel-images")
+            .children()
+            .eq(currentImgIndex)
+            .css("display", "none");
+          conLog("hide current image(1)");
+
+          $(".scroll").empty();
+          // increment image index
+          if (currentImgIndex < highestIndex) {
+            currentImgIndex++;
+          } else {
+            currentImgIndex = 0;
+          }
+          $(".scroll").text(movies[currentImgIndex].overview);
+
+          // show current image
+          $(".carousel-images")
+            .children()
+            .eq(currentImgIndex)
+            .css("display", "block");
+        });
+
+        $(".previous").on("click", () => {
+          // hide current image
+          $(".carousel-images")
+            .children()
+            .eq(currentImgIndex)
+            .css("display", "none");
+
+          $(".scroll").empty();
+          // decrement the image index
+          if (currentImgIndex > 0) {
+            currentImgIndex--;
+          } else {
+            currentImgIndex = highestIndex;
+          }
+
+          // show current image
+          $(".carousel-images")
+            .children()
+            .eq(currentImgIndex)
+            .css("display", "block");
+          $(".scroll").text(movies[currentImgIndex].overview);
+        });
       });
     });
-  });
-  conLog("testyboi");
-  let currentImgIndex = 0;
-  let highestIndex = $(".carousel-images").children().length - 1;
-  // next button
-  $(".next").on("click", () => {
-    // hide current image
-    $(".carousel-images")
-      .children()
-      .eq(currentImgIndex)
-      .css("display", "none");
-    // increment image index
-    if (currentImgIndex < highestIndex) {
-      currentImgIndex++;
-    } else {
-      currentImgIndex = 0;
-    }
-
-    // show current image
-    $(".carousel-images")
-      .children()
-      .eq(currentImgIndex)
-      .css("display", "block");
-  });
-
-  $(".previous").on("click", () => {
-    // hide current image
-    $(".carousel-images")
-      .children()
-      .eq(currentImgIndex)
-      .css("display", "none");
-    // decrement the image index
-    if (currentImgIndex > 0) {
-      currentImgIndex--;
-    } else {
-      currentImgIndex = highestIndex;
-    }
-    // show current image
-    $(".carousel-images")
-      .children()
-      .eq(currentImgIndex)
-      .css("display", "block");
   });
 });
 
