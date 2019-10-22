@@ -97,3 +97,7 @@ form h1 {
   /* position: relative; */
   bottom: 0;
 }
+footer img {
+  margin-top: 50px;
+  width: 150px;
+}

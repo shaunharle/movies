@@ -15,9 +15,7 @@ $(() => {
       `https://api.themoviedb.org/3/search/movie?api_key=242360b40786effa62d7b362929924c5&query=` +
       $fixedInput;
     $(event.currentTarget).trigger("reset");
-    // const $searchedFor = $("<h1>")
-    //   .text(`Showing movies similar to your search for: ${$inputValue}`)
-    //   .prependTo($(".carousel-container"));
+
     $.ajax({
       url: searchLink
     }).then(grabID => {
@@ -36,6 +34,7 @@ $(() => {
         movies = findSimilar.results;
 
         conLog(movies);
+        // Loop to iterate through the array
         for (i = 0; i < 10; i++) {
           count = i;
 
@@ -45,22 +44,17 @@ $(() => {
           posterLink = "http://image.tmdb.org/t/p/w1280";
           posterPath = movies[i].poster_path;
 
-          // let $movieName = $("<p>").text(movieTitles);
-          // $("#movieDiv").append($movieName);
           let $posterImage = $("<img>")
             .attr("src", posterLink + posterPath)
-            // .attr("id", `${"poster" + i}`)
-            // .css("display", "none")
+
             .appendTo(".carousel-images");
         }
 
         let $overviewDiv = $("<div>")
-          // .addClass("scroll")
           .text(movies[0].overview)
           .appendTo(".scroll");
-
+        // carousel block begins
         let currentImgIndex = 0;
-
         let highestIndex = $(".carousel-images").children().length - 1;
         // next button
         $(".next").on("click", () => {
