@@ -11,3 +11,7 @@ I used HTML, CSS, Javascript, JQuery, and AJAX in order to use an API I found vi
 For a fledgling programmer like myself, AJAX functions in order to handle data are difficult to utilize. There's also the issue of scope and putting everything in the right order to be able to trickle the data through in a usable manner.
 ## Planned improvements
 I'm going to be overhauling this entire page after the course so I can have it search for specific parameters(genre, director, main actor, decade, language, etc) instead of just using the "find similar" function that the API provided. I'd like either a dropdown or radio buttons to select the desired parameters, and I'd like to add a "play trailer" button, or have it able to click the poster to bring up the trailer.
+
+
+
+http://defeated-money.surge.sh/
